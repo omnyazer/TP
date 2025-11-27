@@ -62,52 +62,81 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["pseudo"], $_POST["ema
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <h1>Inscription</h1>
+<body class="bg-gradient" style="background: linear-gradient(135deg, #fde68a, #a5b4fc, #f9a8d4); min-height: 100vh;">
 
-                <?php if (!empty($errors)): ?>
-                    <div class="alert alert-danger">
-                        <ul>
-                            <?php foreach ($errors as $error): ?>
-                                <li><?= htmlspecialchars($error) ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white bg-opacity-75 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="color:#6366F1;">Mon Espace</a> 
+             <div class="ms-auto">
+                <a href="connexion.php" class="btn btn-sm px-3 py-1"
+                style="background-color:#6366F1; border:none; color:#FFFFFF; border-radius:10px;">
+                    Connexion
+                </a>
+            </div>
+        </div>
+    </nav>
 
-                <?php if ($success): ?>
-                    <div class="alert alert-success">
-                        <?= htmlspecialchars($success) ?>
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 72px);">
+        <div class="row w-100">
+            <div class="col-md-6 col-lg-5 mx-auto">
+                <div class="card shadow border-0 rounded-4" style="background-color: #fdf2ff;">
+                    <div class="card-header text-center rounded-top-4" style="background: linear-gradient(135deg, #bfdbfe, #fbcfe8);">
+                        <h1 class="h3 mb-0 text-slate-700">Créer un compte</h1>
                     </div>
-                <?php endif; ?>
+                    <div class="card-body p-4">
 
-                <form action="" method="post">
-                    <div class="mb-3">
-                        <label for="pseudo" class="form-label">Pseudo</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?= isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '' ?>">
+                        <?php if (!empty($errors)): ?>
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    <?php foreach ($errors as $error): ?>
+                                        <li><?= htmlspecialchars($error) ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($success): ?>
+                            <div class="alert alert-success">
+                                <?= htmlspecialchars($success) ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="" method="post" class="mt-3">
+                            <div class="mb-3">
+                                <label for="pseudo" class="form-label">Pseudo</label>
+                                <input type="text" class="form-control form-control-lg" id="pseudo" name="pseudo"
+                                       value="<?= isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '' ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control form-control-lg" id="email" name="email"
+                                       value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Mot de passe</label>
+                                <input type="password" class="form-control form-control-lg" id="password" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password_confirm" class="form-label">Confirmer le mot de passe</label>
+                                <input type="password" class="form-control form-control-lg" id="password_confirm" name="password_confirm">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 btn-lg mt-2" style="background-color:#6366f1; border-color:#6366f1;">
+                                S'inscrire
+                            </button>
+                        </form>
+
+                        <p class="text-center mt-3 mb-0">
+                            Déjà un compte ?
+                            <a href="connexion.php" class="fw-semibold" style="color:#6366f1;">Se connecter</a>
+                        </p>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password_confirm" class="form-label">Confirmer le mot de passe</label>
-                        <input type="password" class="form-control" id="password_confirm" name="password_confirm">
-                    </div>
-                    <button type="submit" class="btn btn-primary">S'inscrire</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 
 </html>
