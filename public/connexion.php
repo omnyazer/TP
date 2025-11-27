@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["pseudo"], $_POST["pas
         <div class="container">
             <a class="navbar-brand fw-bold" href="#" style="color:#6366F1;">Mon Espace</a> 
             <div class="ms-auto">
-                <a href="inscription.php" class="btn btn-sm px-3 py-1"
+                <a href="inscription.php" class="btn btn-sm px-4 py-2"
                    style="background-color:#6366F1; border:none; color:#FFFFFF; border-radius:10px;">
                     Inscription
                 </a>
