@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["pseudo"], $_POST["pas
     } else {
         $user = $userManager->authenticate($pseudo, $password);
 
-        if ($user) {
+                if ($user) {
             SessionManager::set('logged_in', true);
             SessionManager::set('connected_user', [
                 'id'     => $user->getId(),
@@ -24,10 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["pseudo"], $_POST["pas
                 'mail'   => $user->getMail(),
             ]);
 
-            $loginSuccess = "Connexion réussie. Bienvenue, " . htmlspecialchars($user->getPseudo()) . " !";
+            header('Location: profil.php');
+            exit;
         } else {
             $loginError = "Pseudo ou mot de passe incorrect";
         }
+
     }
 }
 ?>
@@ -68,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["pseudo"], $_POST["pas
                         <?php if ($loginError): ?>
                             <div class="alert alert-danger"><?= htmlspecialchars($loginError) ?></div>
                         <?php endif; ?>
-
                         <?php if ($loginSuccess): ?>
                             <div class="alert alert-success"><?= htmlspecialchars($loginSuccess) ?></div>
                         <?php endif; ?>

@@ -8,7 +8,6 @@ class SessionManager
             session_start();
         }
     }
-
     public static function set(string $key, $value): void
     {
         $_SESSION[$key] = $value;
